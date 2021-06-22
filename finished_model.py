@@ -65,33 +65,34 @@ t = []
 th = []
 f = []
 
-path = #path to the images
+path =  #path to the images
 counter = 0
 for filename in os.listdir(path):
-    data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-    
-    #crucible detection
-    img = Image.open(path + filename)
-    pred = cdmodel.predict(img)
-    lbl, box, score = pred
-    temp = box.numpy()[0]
-    box = (round(temp[0]), round(temp[1]), round(temp[2]), round(temp[3]))
-    image = img.crop(box) #passing this to powder model
-    
-    #powder stuff
-    size = (224, 224)
-    image = ImageOps.fit(image, size, Image.ANTIALIAS)
-    image_array = np.asarray(image)
-    
-    #display image (to user) that model took as input
-    # image.show()
-    #run image through the model
-    normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
-    data[0] = normalized_image_array
-    prediction = model.predict(data)
-    classify(prediction, filename) 
-    counter += 1
-    print(counter)
+    if(filename.endswith(".png")):
+        data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+        
+        #crucible detection
+        img = Image.open(path + filename)
+        pred = cdmodel.predict(img)
+        lbl, box, score = pred
+        temp = box.numpy()[0]
+        box = (round(temp[0]), round(temp[1]), round(temp[2]), round(temp[3]))
+        image = img.crop(box) #passing this to powder model
+        
+        #powder stuff
+        size = (224, 224)
+        image = ImageOps.fit(image, size, Image.ANTIALIAS)
+        image_array = np.asarray(image)
+        
+        #display image (to user) that model took as input
+        # image.show()
+        #run image through the model
+        normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
+        data[0] = normalized_image_array
+        prediction = model.predict(data)
+        classify(prediction, filename) 
+        counter += 1
+        print(counter)
     
 #writing the image names to separate .txt files
 A = open("0.txt", "w+")
@@ -114,28 +115,5 @@ E = open("4.txt", "w+")
 for i in range(len(four)):
     E.write(four[i] + ": " + str(f[i])+ '\n')
 E.close()
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
