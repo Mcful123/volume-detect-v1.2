@@ -65,7 +65,7 @@ t = []
 th = []
 f = []
 
-path = 'C:/Users/chomi/Desktop/all_small/'
+path = #path to the images
 counter = 0
 for filename in os.listdir(path):
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
