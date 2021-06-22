@@ -1,13 +1,13 @@
 # volume-detect-v1.2
 
-needed:
-numpy 1.19.5
-tensorflow
-pillow
-detecto
+needed: <br />
+numpy 1.19.5<br />
+tensorflow<br />
+pillow<br />
+detecto<br />
 
-i.e:
-pip install detecto
-pip install numpy==1.19.5
-pip install pillow
-pip install tensorflow
+i.e:<br />
+pip install detecto<br />
+pip install numpy==1.19.5<br />
+pip install pillow<br />
+pip install tensorflow<br />
