@@ -65,7 +65,7 @@ t = []
 th = []
 f = []
 
-path =  #path to the images
+path = 'C:/tempPath' #path to the images
 counter = 0
 for filename in os.listdir(path):
     if(filename.endswith(".png")):
