@@ -19,11 +19,6 @@ np.set_printoptions(precision =3)
 model = tensorflow.keras.models.load_model('new_keras.h5', compile=False)
 cdmodel = core.Model.load('model.pth', ['sample'])
 
-def find(string):
-    path = 'C:/Users/chomi/Desktop/ten/z'
-    for i in range(10):
-        if(string in os.listdir(path + str(i))):
-            return i
 k = []
 #taking prediction and classifying volume
 def classify(prediction):
@@ -52,7 +47,6 @@ def evaluate():
         lbl, box, score = pred
         temp = box.numpy()[0]
         box = (round(temp[0]), round(temp[1]), round(temp[2]), round(temp[3]))
-        # print(filename, find(filename))
         image = img.crop(box) #passing image to powder model
         
         # formatting image for powder stuff
